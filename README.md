@@ -5,9 +5,7 @@
 
 ## Usage
 
-To create a pass, you first create a pass template which holds information
-that doesn't change between the passes you create. Then you can create a Pass
-by providing the rest of the fields and images.
+To create a pass, you first create a pass template which holds information that remains static for each subsequent pass created from the template. Then you can create a Pass by providing the rest of the fields and images.
 
 A Pass can act as a stream, or as a plain-callback async operation.
 Performance-wise you should use the stream interface, when its possible to pipe the pass to another stream. (eg store to filesystem or Amazon S3)
@@ -103,6 +101,25 @@ Rest of the fields you want this pass to have. Fields provided to the template w
 #### cb
 
 Optional callback function. If a callback is provided, then the pass will not act as a stream, and will call this function as `cb(err, res)` when its done. Result is a buffer of the .pkpass created.
+
+## Images
+
+Images should be passed either in the template or pass fields. Type must be stream, buffer or path string.
+Valid image keys are: 'icon', 'logo', 'strip', 'thumbnail', 'background', 'footer' and a '2x' version of each of those, in case you also have high resolution images for retina displays.
+
+### Example
+
+```javascript
+template.createPass({
+  ...
+  icon:   '/path/to/image.png',
+  icon2x: '/path/to/high/resolution/image.png',
+  logo:   fs.createReadStream('/path/to/logo.png'),
+  logo2x: streamFromS3,
+  footer: footerBuffer
+  ...
+})
+```
 
 ## Tests
 
