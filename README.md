@@ -26,7 +26,8 @@ var template = passbook.createTemplate('coupon', {
 }, {
   certs: {
     wwdr: '/path/to/wwdr.pem',
-    pass: '/path/to/pass_cert'
+    pass: '/path/to/pass_cert.pem', // pem with certificate and private key
+    password: 'this_is_the_pass_phrase' // pass phrase for the pass_cert.pem file
   }
 })
 
