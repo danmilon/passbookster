@@ -17,9 +17,9 @@
     "library"
   ],
   "dependencies": {
-    "underscore": "1.4.2",
-    "archiver":   "0.1.0",
-    "async":      "0.1.22"
+    "underscore": "1.4.4",
+    "archiver":   "0.4.1",
+    "async":      "0.2.6"
   },
   "devDependencies": {
     "mocha":  "1.6.0",
